@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No of exam</title>
+</head>
+<body>
+    <h1>Today's Test:</h1>
+    {% if today_exam %}
+    <table border="1px">
+        <thead>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Duration</th>
+            <th>No. of questions</th>
+            <th>Maximum Mark</th>
+            <th>Mark Per Question</th>
+            <th>Question Negative Mark</th>
+            <th>Action</th>
+        </thead>
+        {% for exam in today_exam %}
+        <tr>
+            <td>{{exam.id}}</td>
+            <td>{{exam.exam_date}}</td>
+            <td>{{exam.start_time}}</td>
+            <td>{{exam.end_time}}</td>
+            <td>{{exam.duration}}</td>
+            <td>{{exam.num_questions}}</td>
+            <td>{{exam.maximum_marks}}</td>
+            <td>{{exam.question_marks}}</td>
+            <td>{{exam.question_negative_marks}}</td>
+            <td><a href="/exam/{{exam.id}}">Start Quiz</a></td>
+           
+
+        </tr>
+        {% endfor %}
+    </table>
+    {%else%}
+    <p>There are no test Today!</p>
+    {% endif %}
+</body>
+</html>
